@@ -19,7 +19,9 @@
                     <th>Select</th>
                     <th>Title</th>
                     <th>Author</th>
-                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Average GoodReads Rating</th>
+                    <th>Pages</th>
                 </tr>
             </thead>
             <tbody id="audiobooks-table-body">
@@ -42,7 +44,9 @@
                             <td><input type="checkbox" value="${row.title}"></td>
                             <td>${row.title}</td>
                             <td>${row.author}</td>
-                            <td>${row.genre}</td>
+                            <td>${row.year}</td>
+                            <td>${row.rating}</td>
+                            <td>${row.pages}</td>
                         `;
                         tableBody.appendChild(tr);
                     });
