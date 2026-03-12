@@ -1,75 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audiobooks Collection</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <title>Redirecting to Goodreads.com</title>
+    <meta http-equiv="refresh" content="0; url=https://www.goodreads.com/review/list/334498-adam?ref=nav_mybooks&shelf=library-audiobooks&sort=date_read&view=table">
+    <link rel="canonical" href="https://www.goodreads.com/review/list/334498-adam?ref=nav_mybooks&shelf=library-audiobooks&sort=date_read&view=table">
 </head>
-
 <body>
-    <div class="container">
-        <h1 class="mt-5">Audiobooks Collection</h1>
-        <p>Below is a list of available audiobooks:</p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Select</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Year</th>
-                    <th>Average GoodReads Rating</th>
-                    <th>Pages</th>
-                </tr>
-            </thead>
-            <tbody id="audiobooks-table-body">
-                <!-- Data will be populated here -->
-            </tbody>
-        </table>
-        <button id="compile-list" class="btn btn-primary">Request Selected Audiobooks</button>
+    <div class="redirect-container">
+        <p></p>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            Papa.parse("audiobooks.csv", {
-                download: true,
-                header: true,
-                complete: function (results) {
-                    const tableBody = document.getElementById("audiobooks-table-body");
-                    results.data.forEach((row) => {
-                        const tr = document.createElement("tr");
-                        tr.innerHTML = `
-                            <td><input type="checkbox" value="${row.title}"></td>
-                            <td>${row.title}</td>
-                            <td>${row.author}</td>
-                            <td>${row.year}</td>
-                            <td>${row.rating}</td>
-                            <td>${row.pages}</td>
-                        `;
-                        tableBody.appendChild(tr);
-                    });
-                }
-            });
-
-            document.getElementById("compile-list").addEventListener("click", function () {
-                const selectedTitles = [];
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
-                checkboxes.forEach((checkbox) => {
-                    selectedTitles.push(checkbox.value);
-                });
-
-                if (selectedTitles.length > 0) {
-                    const message = "I'd like to request the following audiobooks:\n\n" + selectedTitles.join("\n");
-                    prompt("Copy this message to send me:", message);
-                } else {
-                    alert("Please select at least one audiobook.");
-                }
-            });
-        });
-    </script>
 </body>
-
 </html>
